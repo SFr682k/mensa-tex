@@ -43,6 +43,31 @@
 \@printtrue
 \DeclareOption{app}{\@printfalse}
 
+% Use English localisation
+\newif\if@english
+\newif\if@engb
+\newif\if@enus
+\@englishtrue
+\@engbtrue
+\@enusfalse
+\DeclareOption{en-GB}{%
+	\@germanfalse
+	\@englishtrue
+	\@engbtrue
+	\@enusfalse}
+\DeclareOption{en-US}{%
+	\@germanfalse
+	\@englishtrue
+	\@engbfalse
+	\@enustrue}
+
+% Use German localisation
+\newif\if@german
+\@germanfalse
+\DeclareOption{german}{%
+	\@englishfalse
+	\@germantrue}
+
 \ProcessOptions
 
 
@@ -54,6 +79,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[table]{xcolor}
 \RequirePackage{textcomp}
+\RequirePackage{tracklang}
 
 % Date-specific stuff
 \RequirePackage{datetime2}
@@ -234,64 +260,151 @@
 
 
 
-% TODO: Englisch locals
+% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (regionless) LOCALISATION ------------------------------------------------
+
+\if@english
+	% English weekday names
+	\def\wdayname{}
+	\renewcommand{\wdayname}[1]{%
+		\ifcase\DTMfetchdow{#1}
+		Monday%
+		\or
+		Tuesday%
+		\or
+		Wednesday%
+		\or
+		Thursday%
+		\or
+		Friday%
+		\fi
+	}
+	
+	% German short weekday names
+	\def\swdayname{}
+	\renewcommand{\swdayname}[1]{%
+		\ifcase#1
+		Mon%
+		\or
+		Tue%
+		\or
+		Wed%
+		\or
+		Thu%
+		\or
+		Fri%
+		\fi
+	}
+	
+	% English menu name
+	\def\menuname{Menu}
+	\def\dessertname{Dessert}
+	\def\dinnername{Dinner}
+	\def\dietname{Diet for}
+\fi
+
+
+
 % REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (GB) LOCALISATION --------------------------------------------------------
+
+\if@engb
+	% Print the short version of a saved date
+	\def\shortdate{}
+	\renewcommand{\shortdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}/\DTMtwodigits{\DTMfetchmonth{#1}}/\DTMtwodigits{\DTMfetchyear{#1}}}
+	
+	% Print the short version of a saved date with the day of week
+	\def\dowshortdate{}
+	\renewcommand{\dowshortdate}[1]{\wdayname{#1},~\shortdate{#1}}
+	
+	% Print the long version of a saved date with the day of week
+	\def\longdate{}
+	\renewcommand{\longdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}/\DTMtwodigits{\DTMfetchmonth{#1}}/\DTMfetchyear{#1}}
+	
+	% Print a range of dates
+	\def\daterange{}
+	\renewcommand{\daterange}[2]{\shortdate{#1}\,--\,\shortdate{#2}}
+\fi
+
+
+
 % REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (US) LOCALISATION --------------------------------------------------------
+
+\if@enus
+	% Print the short version of a saved date
+	\def\shortdate{}
+	\renewcommand{\shortdate}[1]{\DTMtwodigits{\DTMfetchmonth{#1}}/\DTMtwodigits{\DTMfetchday{#1}}/\DTMtwodigits{\DTMfetchyear{#1}}}
+	
+	% Print the short version of a saved date with the day of week
+	\def\dowshortdate{}
+	\renewcommand{\dowshortdate}[1]{\wdayname{#1},~\shortdate{#1}}
+	
+	% Print the long version of a saved date with the day of week
+	\def\longdate{}
+	\renewcommand{\longdate}[1]{\DTMtwodigits{\DTMfetchmonth{#1}}/\DTMtwodigits{\DTMfetchday{#1}}/\DTMfetchyear{#1}}
+	
+	% Print a range of dates
+	\def\daterange{}
+	\renewcommand{\daterange}[2]{\shortdate{#1}\,--\,\shortdate{#2}}
+\fi
+
+
 
 % REQUIRED IN CONJUNCTION WITH datetime2 - GERMAN LOCALISATION --------------------------------------------------------------
 
-% German weekday names
-\def\wdayname{}
-\renewcommand{\wdayname}[1]{%
-	\ifcase\DTMfetchdow{#1}
-	Montag%
-	\or
-	Dienstag%
-	\or
-	Mittwoch%
-	\or
-	Donnerstag%
-	\or
-	Freitag%
-	\fi
-}
-
-% German short weekday names
-\def\swdayname{}
-\renewcommand{\swdayname}[1]{%
-	\ifcase#1
-	Mo%
-	\or
-	Di%
-	\or
-	Mi%
-	\or
-	Do%
-	\or
-	Fr%
-	\fi
-}
-
-% German menu name
-\def\menuname{Men\"u}
-\def\dessertname{Dessert}
-\def\dinnername{Abendessen}
-
-% Print the short version of a saved date
-\def\shortdate{}
-\renewcommand{\shortdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}.\DTMtwodigits{\DTMfetchmonth{#1}}.}
-
-% Print the short version of a saved date with the day of week
-\def\dowshortdate{}
-\renewcommand{\dowshortdate}[1]{\wdayname{#1},~\shortdate{#1}}
-
-% Print the long version of a saved date with the day of week
-\def\longdate{}
-\renewcommand{\longdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}.\DTMtwodigits{\DTMfetchmonth{#1}}.\DTMfetchyear{#1}}
-
-% Print a range of dates
-\def\daterange{}
-\renewcommand{\daterange}[2]{\shortdate{#1}\,--\,\longdate{#2}}
+\if@german
+	% German weekday names
+	\def\wdayname{}
+	\renewcommand{\wdayname}[1]{%
+		\ifcase\DTMfetchdow{#1}
+		Montag%
+		\or
+		Dienstag%
+		\or
+		Mittwoch%
+		\or
+		Donnerstag%
+		\or
+		Freitag%
+		\fi
+	}
+	
+	% German short weekday names
+	\def\swdayname{}
+	\renewcommand{\swdayname}[1]{%
+		\ifcase#1
+		Mo%
+		\or
+		Di%
+		\or
+		Mi%
+		\or
+		Do%
+		\or
+		Fr%
+		\fi
+	}
+	
+	% German menu name
+	\def\menuname{Men\"u}
+	\def\dessertname{Dessert}
+	\def\dinnername{Abendessen}
+	\def\dietname{Speiseplan vom}
+	
+	% Print the short version of a saved date
+	\def\shortdate{}
+	\renewcommand{\shortdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}.\DTMtwodigits{\DTMfetchmonth{#1}}.}
+	
+	% Print the short version of a saved date with the day of week
+	\def\dowshortdate{}
+	\renewcommand{\dowshortdate}[1]{\wdayname{#1},~\shortdate{#1}}
+	
+	% Print the long version of a saved date with the day of week
+	\def\longdate{}
+	\renewcommand{\longdate}[1]{\DTMtwodigits{\DTMfetchday{#1}}.\DTMtwodigits{\DTMfetchmonth{#1}}.\DTMfetchyear{#1}}
+	
+	% Print a range of dates
+	\def\daterange{}
+	\renewcommand{\daterange}[2]{\shortdate{#1}\,--\,\longdate{#2}}
+\fi
 
 
 
@@ -308,16 +421,15 @@
 			\image
 		\end{minipage}
 		\begin{minipage}[b][4cm][c]{.48\textwidth}\centering\huge\color{\ctextcolor}
-			% TODO: Ortsabhängige Definition nutzen
 			\scalebox{2}{\Huge \insertmensaname} \\[\bigskipamount]
-			Speiseplan vom \\
+			\dietname \\
 			\daterange{monday}{friday}
 		\end{minipage}
 	
 		\setlength{\arrayrulewidth}{1.25pt}
 		\begin{center}
 			\rowcolors{2}{\bgcolor!20}{white}
-			\begin{tabular}{|>{\bfseries}M{0.75cm}*{2}{|M{5cm}}*2{|M{2.5cm}}|}
+			\begin{tabular}{|>{\bfseries}M{0.95cm}*{2}{|M{5cm}}*2{|M{2.4cm}}|}
 				\hline
 				\rowcolor{\bgcolor} \vbox to .5cm {} &%
 				\bfseries{\color{\colorfg} \menuname{} 1} &%
