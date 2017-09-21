@@ -416,10 +416,10 @@
 		\end{center}
 		%
 		\bigskip\bigskip
-		\begin{minipage}[b][4cm][b]{.5\textwidth} \LARGE
+		\begin{minipage}[b][.15\textheight][b]{.5\textwidth} \LARGE
 			\image
 		\end{minipage}
-		\begin{minipage}[b][4cm][c]{.48\textwidth}\flushright\huge\color{\ctextcolor}
+		\begin{minipage}[b][.15\textheight][c]{.48\textwidth}\flushright\huge\color{\ctextcolor}
 			\scalebox{2}{\Huge \insertmensaname} \\[\bigskipamount]
 			\dietname \\
 			\daterange{monday}{friday}
