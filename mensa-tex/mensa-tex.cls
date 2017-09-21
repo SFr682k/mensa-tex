@@ -208,7 +208,7 @@
 \def\ctextcolor{black}
 
 % The image
-\def\image{}
+\def\image{~}
 \def\setimage{}
 \renewcommand{\setimage}[1]{\def\image{#1}}
 
@@ -419,7 +419,7 @@
 		\begin{minipage}[b][4cm][b]{.5\textwidth} \LARGE
 			\image
 		\end{minipage}
-		\begin{minipage}[b][4cm][c]{.48\textwidth}\centering\huge\color{\ctextcolor}
+		\begin{minipage}[b][4cm][c]{.48\textwidth}\flushright\huge\color{\ctextcolor}
 			\scalebox{2}{\Huge \insertmensaname} \\[\bigskipamount]
 			\dietname \\
 			\daterange{monday}{friday}
