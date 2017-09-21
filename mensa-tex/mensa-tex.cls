@@ -11,7 +11,7 @@
 %%	Author: Sebastian Friedl
 %%	Current maintainer of this work is Sebastian Friedl
 %%
-%%	This work consists of the file mensa-tex.cls
+%%	This work consists of the files mensa-tex.cls and mensa-tex-doc.tex
 %%
 %%	---------------------------------------------------------------------------------------------------------------------------------------------
 %%
@@ -79,7 +79,6 @@
 \RequirePackage{graphicx}
 \RequirePackage[table]{xcolor}
 \RequirePackage{textcomp}
-\RequirePackage{tracklang}
 
 % Date-specific stuff
 \RequirePackage{datetime2}
