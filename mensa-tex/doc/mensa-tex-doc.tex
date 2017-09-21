@@ -25,10 +25,8 @@
 
 
 % !TeX spellcheck=en_GB
-
-% !TeX document-id = {681db40e-7a84-4428-b4f4-84e230e3ba79}
 % !TeX program=lualatex
-% !TeX TXS-program:compile=txs:///lualatex/[--shell-escape]
+
 
 
 \documentclass[11pt]{ltxdoc}
@@ -38,9 +36,9 @@
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
 
+\usepackage{array}
 \usepackage{csquotes}
 \usepackage{hyperref}
-\usepackage{minted}
 \usepackage{multicol}
 \usepackage[english]{selnolig}
 
@@ -64,11 +62,10 @@
 	\maketitle
 	\thispagestyle{empty}
 	
-	\begin{flushright} \itshape
-		“Would you tell me, please, which way I ought to walk from here?” \\
-		“That depends a good deal on where you want to get to,” said the Cat. \\
-		\textsc{Lewis Carroll}
-	\end{flushright}
+	\begin{center} \itshape
+		\enquote{I can't go to a restaurant and order food \\ because I keep looking at the fonts on the menu} \\
+		--- \textsc{\upshape Donald E. Knuth} ---
+	\end{center}
 	
 	\medskip
 	\begin{abstract}
@@ -112,28 +109,128 @@
 	\end{small}
 
 
+	\subsection*{Call for cooperation}
+	\addcontentsline{toc}{subsection}{Call for cooperation}
+	Please report bugs and other problems as well as suggestions for improvements using the \href{https://github.com/SFr682k/mensa-tex/issues}{issue tracker on GitHub} or sending an email (\href{mailto:sfr682k@t-online.de}{\texttt{sfr682k@t-online.de}}).
+
 
 	\clearpage
 	
-	% AB HIER ÜBERARBEITEN
 		
 		
 	% DOCUMENTATION PART ----------------------------------------------------------------------
 	
-	\section{Using the class}
-	Using this class is as easy as using the \mintinline{LaTeX}{\documentclass{mensa-tex}} command.
+	\section{Using the \texttt{\textbackslash documentclass} command}
+	Using this class is as easy as using the \verb|\documentclass{mensa-tex}| command.
 	
 	\bigskip
-	Following options are available:
+	Following class options are available:
 	\begin{itemize}
-		\item[\texttt{app}] Use a layout optimized for small screens using A6--paper
+		\item[\texttt{app}] Use a layout optimized for small screens using DIN/ISO A6 paper
 		\item[\texttt{en-GB}] Use an English localisation, British variant \textit{(default)}
 		\item[\texttt{en-US}] Use an English localisation, American variant
 		\item[\texttt{german}] Use a German localisation
 	\end{itemize}
 
 
-	% GENERAL SETUP
+	\section{Creating a menu}
+	The following section deals with creating a menu using \texttt{mensa-tex}. \\
+	All the \textit{commands are to be used inside the preamble} since the menu gets created instantly when using \verb|\begin{document}|.
+	
+	\subsection{Setting up the basic information}
+	The basic information consists of the name of the cafeteria, the institute (or school) it is located at and the image used on the single pages. \\
+	It can be set by using the following commands:
+	
+	\medskip
+	\DescribeMacro{\mensaname}
+	This command is used to declare the name of the cafeteria -- maybe something like \verb|\mensaname{Food Corner}| \textit{(default is the plain old boring \enquote{Mensa})}. \\
+	You may want to change the font size by using arbitrary \LaTeX\ font size commands.
+	
+	\medskip
+	\DescribeMacro{\institute}
+	Sets the name of the institute the cafeteria is located at -- for example, you can insert \verb|\institute{University of LOL}| in your preamble if your cafeteria is located at some institute called the \enquote{University of LOL}. \\
+	Note that information about the institute is only printed when using the normal layout.
+
+	\medskip
+	\DescribeMacro{\setimage}
+	Add an image to your diet plans using this command. \\
+	Note that you \textit{have} to declare the image by using the \verb|\includegraphics| inside \verb|\setimage| (e.~g.~\verb|\setimage{\includegraphics[width=\linewidth]{path/to/picture}}|). \\
+	The space available for the image depends on the used layout (see table \ref{tab:image-sizes}).
+	
+	\begin{table}\centering\sffamily\small\renewcommand{\arraystretch}{1.25}
+		\begin{tabular}{r*{2}{|>{\centering\ttfamily}m{.25\textwidth}<{\arraybackslash}}}
+			       & \textsf{normal layout}                                & app \textsf{layout}                                   \tabularnewline\hline\hline
+			 width & \verb|.50\textwidth|  \newline $\approx$ \verb|9.0cm| & \verb|.58\textwidth|  \newline $\approx$ \verb|4.9cm| \tabularnewline\hline
+			height & \verb|.15\textheight| \newline $\approx$ \verb|4.0cm| & \verb|.15\textheight| \newline $\approx$ \verb|1.9cm|
+		\end{tabular}
+	
+		\rmfamily
+		\caption{Available space for the header image}
+		\label{tab:image-sizes}
+	\end{table}
+	
+	
+	\subsection{Adding food}
+	For adding information about the food, the following six commands are provided.
+	
+	\medskip
+	\DescribeMacro{\startdate}
+	This commands defines the \enquote{start date}, the date of the first entry \textit{(the start date's weekday happens to be a Monday)}.	The start date has to be present in \texttt{YYYY-MM-DD} format, e.~g.~\verb|\startdate{2007-01-01}| \textit{(Default is 2001-01-01)}.
+	
+	\medskip
+	\DescribeMacro{\monday}\DescribeMacro{\tuesday}\DescribeMacro{\wednesday}\DescribeMacro{\thursday}\DescribeMacro{\friday}
+	Use these five commands to insert food into the empty diet. \\
+	Every single command requires the same four arguments:
+	\begin{multicols}{4}
+		\begin{enumerate}\itemsep0pt
+			\item Menu I
+			\item Menu II
+			\item Dessert
+			\item Lunch
+		\end{enumerate}
+	\end{multicols}
+
+	For example, to obtain Monday's menu consisting of
+	\begin{multicols}{2}
+		\begin{tabbing}
+			\hspace{2cm}\=\kill
+			Menu I:		\> Fish and chips \\
+			Menu II:	\> Crispy fried chicken \\
+			Dessert:	\> Chocolate fudge \\
+			Lunch:		\> DIY hamburgers
+		\end{tabbing}
+	\end{multicols}
+	you have to write \\
+	\verb|\monday{Fish and chips}%          <-- % is required for line breaks| \\\nopagebreak[4]
+	\verb|       {Crispy fried chicken}%| \\\nopagebreak[4]
+	\verb|       {Chocolate fudge}%| \\\nopagebreak[4]
+	\verb|       {DIY hamburgers}|
+	
+	\smallskip
+	It is possible to insert the command listed above without line breaks, however, doing so will result in the source being less human--readable.
+	
+	\smallskip
+	Due to the menu being implemented in a \texttt{tabular} environment, you have to use \verb|\newline| instead of \,\verb|\\|\, to produce additional lines. \\
+	Possible, additional hyphenations not found by \LaTeX\ can be marked by manually inserting discretionary hyphens (\verb|\-|) (e.~g.~\verb|hyphen\-ation|).
+	
+	
+	
+	% TODO: Ab hier weiterschreiben
+	\subsection{Adding additional information}
+	% \longremarks
+	% \shortremarks
+	
+	\subsection{Using fancy colours}
+	% \setbgcolor
+	% \setcolorfg
+	% \setctextcolor
+	
+	% \sup
+	% \vgt	\vgn
+	
+	
+	\section{Adding support for other languages}
+	
 	
 	% EXAMPLES
 \end{document}
