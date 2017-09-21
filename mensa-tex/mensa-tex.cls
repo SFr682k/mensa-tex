@@ -300,29 +300,36 @@
 \if@print
 	\AtBeginDocument{%
 		\begin{center} \huge
-			\insertinstitute
+			\color{\ctextcolor}\insertinstitute
 		\end{center}
 		%
 		\bigskip\bigskip
 		\begin{minipage}[b][4cm][b]{.5\textwidth} \LARGE
 			\image
 		\end{minipage}
-		\begin{minipage}[b][4cm][c]{.48\textwidth}\centering\huge
+		\begin{minipage}[b][4cm][c]{.48\textwidth}\centering\huge\color{\ctextcolor}
 			% TODO: Ortsabhängige Definition nutzen
 			\scalebox{2}{\Huge \insertmensaname} \\[\bigskipamount]
 			Speiseplan vom \\
 			\daterange{monday}{friday}
 		\end{minipage}
 	
+		\setlength{\arrayrulewidth}{1.25pt}
 		\begin{center}
+			\rowcolors{2}{\bgcolor!20}{white}
 			\begin{tabular}{|>{\bfseries}M{0.75cm}*{2}{|M{5cm}}*2{|M{2.5cm}}|}
 				\hline
-				\rule{0pt}{1cm} & \bfseries \menuname{} 1 & \bfseries \menuname{} 2 & \bfseries \dessertname{} & \bfseries \dinnername{} \\ \hline
-				\printday{0}    & \mondayI                & \mondayII               & \mondayD                 & \mondayA                \\ \hline
-				\printday{1}    & \tuesdayI               & \tuesdayII              & \tuesdayD                & \tuesdayA               \\ \hline
-				\printday{2}    & \wednesdayI             & \wednesdayII            & \wednesdayD              & \wednesdayA             \\ \hline
-				\printday{3}    & \thursdayI              & \thursdayII             & \thursdayD               & \thursdayA              \\ \hline
-				\printday{4}    & \fridayI                & \fridayII               & \fridayD                 & \fridayA                \\ \hline
+				\rowcolor{\bgcolor} \vbox to .5cm {} &%
+				\bfseries{\color{\colorfg} \menuname{} 1} &%
+				\bfseries{\color{\colorfg} \menuname{} 2} &%
+				\bfseries{\color{\colorfg} \dessertname{}} &%
+				\bfseries{\color{\colorfg} \dinnername{}} \tabularnewline \hline
+				%
+				\printday{0}    & \mondayI                & \mondayII               & \mondayD                 & \mondayA                \tabularnewline \hline
+				\printday{1}    & \tuesdayI               & \tuesdayII              & \tuesdayD                & \tuesdayA               \tabularnewline \hline
+				\printday{2}    & \wednesdayI             & \wednesdayII            & \wednesdayD              & \wednesdayA             \tabularnewline \hline
+				\printday{3}    & \thursdayI              & \thursdayII             & \thursdayD               & \thursdayA              \tabularnewline \hline
+				\printday{4}    & \fridayI                & \fridayII               & \fridayD                 & \fridayA                \tabularnewline \hline
 			\end{tabular}
 		\end{center}
 	
