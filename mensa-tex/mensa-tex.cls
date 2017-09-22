@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex.cls', Version 2017-09-21
+%%	This is file 'mensa-tex.cls', Version 2017-09-22
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -7,7 +7,7 @@
 %%		http://www.latex-project.org/lppl.txt
 %%	and version 1.3c or later is part of all distributions of LaTeX version 2008-05-04 or later.
 %%
-%%	This work has the LPPL maintenace status 'maintained'.
+%%	This work has the LPPL maintenance status 'maintained'.
 %%	Author: Sebastian Friedl
 %%	Current maintainer of this work is Sebastian Friedl
 %%
@@ -25,7 +25,7 @@
 
 
 
-\ProvidesClass{mensa-tex}[2017/09/21 mensa-tex class -- "sid" (still in development)]
+\ProvidesClass{mensa-tex}[2017/09/22 mensa-tex class -- "sid" (still in development)]
 
 
 % Requires LaTeX2e
@@ -43,7 +43,7 @@
 \@printtrue
 \DeclareOption{app}{\@printfalse}
 
-% Use English localisation
+% Use English localization
 \newif\if@english
 \newif\if@engb
 \newif\if@enus
@@ -61,7 +61,7 @@
 	\@engbfalse
 	\@enustrue}
 
-% Use German localisation
+% Use German localization
 \newif\if@german
 \@germanfalse
 \DeclareOption{german}{%
@@ -131,7 +131,7 @@
 % Defines a column with horizontal and vertical centered cells
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
-% Defines sybols for vegetarian and vegan food
+% Defines symbols for vegetarian and vegan food
 \def\vgt{{\color{green!50!black}\textleaf}}
 \def\vgn{{\color{green!50!black}\textleaf\textleaf}}
 
@@ -152,35 +152,35 @@
 % Avoids errors when the user forgets to set the start date
 \startdate{2001-01-01}
 
-% Commands and variables for monday
+% Commands and variables for Monday
 \def\monday{}
 \def\mondayI{}
 \def\mondayII{}
 \def\mondayA{}
 \def\mondayD{}
 
-% Commands and variables for tuesday
+% Commands and variables for Tuesday
 \def\tuesday{}
 \def\tuesdayI{}
 \def\tuesdayII{}
 \def\tuesdayA{}
 \def\tuesdayD{}
 
-% Commands and variables for wednesday
+% Commands and variables for Wednesday
 \def\wednesday{}
 \def\wednesdayI{}
 \def\wednesdayII{}
 \def\wednesdayA{}
 \def\wednesdayD{}
 
-% Commands and variables for thursday
+% Commands and variables for Thursday
 \def\thursday{}
 \def\thursdayI{}
 \def\thursdayII{}
 \def\thursdayA{}
 \def\thursdayD{}
 
-% Commands and variables for friday
+% Commands and variables for Friday
 \def\friday{}
 \def\fridayI{}
 \def\fridayII{}
@@ -259,7 +259,7 @@
 
 
 
-% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (regionless) LOCALISATION ------------------------------------------------
+% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (regionless) LOCALIZATION ------------------------------------------------
 
 \if@english
 	% English weekday names
@@ -303,7 +303,7 @@
 
 
 
-% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (GB) LOCALISATION --------------------------------------------------------
+% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (GB) LOCALIZATION --------------------------------------------------------
 
 \if@engb
 	% Print the short version of a saved date
@@ -325,7 +325,7 @@
 
 
 
-% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (US) LOCALISATION --------------------------------------------------------
+% REQUIRED IN CONJUNCTION WITH datetime2 - ENGLISH (US) LOCALIZATION --------------------------------------------------------
 
 \if@enus
 	% Print the short version of a saved date
@@ -347,7 +347,7 @@
 
 
 
-% REQUIRED IN CONJUNCTION WITH datetime2 - GERMAN LOCALISATION --------------------------------------------------------------
+% REQUIRED IN CONJUNCTION WITH datetime2 - GERMAN LOCALIZATION --------------------------------------------------------------
 
 \if@german
 	% German weekday names

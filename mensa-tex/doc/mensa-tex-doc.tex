@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex-doc.tex', Version 2017-09-21
+%%	This is file 'mensa-tex-doc.tex', Version 2017-09-22
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -7,7 +7,7 @@
 %%		http://www.latex-project.org/lppl.txt
 %%	and version 1.3c or later is part of all distributions of LaTeX version 2008-05-04 or later.
 %%
-%%	This work has the LPPL maintenace status 'maintained'.
+%%	This work has the LPPL maintenance status 'maintained'.
 %%	Author: Sebastian Friedl
 %%	Current maintainer of this work is Sebastian Friedl
 %%
@@ -24,7 +24,7 @@
 %%	--------------------------------------------------------------------------------------------------------------------------------------------- 
 
 
-% !TeX spellcheck=en_GB
+% !TeX spellcheck = en_US
 % !TeX program=lualatex
 
 
@@ -33,14 +33,17 @@
 
 \usepackage[utopia]{mathdesign}
 \usepackage[no-math]{fontspec}
+
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
+\usepackage[english]{selnolig}
 
 \usepackage{array}
 \usepackage{csquotes}
 \usepackage{hyperref}
-\usepackage{multicol}
-\usepackage[english]{selnolig}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
 
 \parindent 0pt
 
@@ -54,7 +57,7 @@
 
 \title{The \texttt{mensa-tex} class \\ {\large\url{https://github.com/SFr682k/mensa-tex}}}
 \author{Sebastian Friedl \\ \href{mailto:sfr682k@t-online.de}{\ttfamily sfr682k@t-online.de}}
-\date{2017/09/21}
+\date{2017/09/22}
 
 \hypersetup{pdftitle={The mensa-tex class},pdfauthor={Sebastian Friedl}}
 
@@ -100,7 +103,7 @@
 		The latest version of this license is available at \url{http://www.latex-project.org/lppl.txt} and version 1.3c or later is part of all distributions of \LaTeX\ version 2008-05-04 or later.
 		
 		\smallskip
-		This work has the LPPL maintenace status \enquote*{maintained}. The current maintainer of this work is Sebastian Friedl. \\
+		This work has the LPPL maintenance status \enquote*{maintained}. The current maintainer of this work is Sebastian Friedl. \\
 		This work consists of the following files:
 		\begin{itemize} \itemsep 0pt
 			\item \texttt{mensa-tex.cls} and
@@ -120,22 +123,23 @@
 		
 	% DOCUMENTATION PART ----------------------------------------------------------------------
 	
-	\section{Using the \texttt{\textbackslash documentclass} command}
+	\section{Using the \texttt{\textbackslash documentclass} command} \label{sec:docclass}
 	Using this class is as easy as using the \verb|\documentclass{mensa-tex}| command.
 	
 	\bigskip
 	Following class options are available:
 	\begin{itemize}
 		\item[\texttt{app}] Use a layout optimized for small screens using DIN/ISO A6 paper
-		\item[\texttt{en-GB}] Use an English localisation, British variant \textit{(default)}
-		\item[\texttt{en-US}] Use an English localisation, American variant
-		\item[\texttt{german}] Use a German localisation
+		\item[\texttt{en-GB}] Use an English localization, British variant \textit{(default)}
+		\item[\texttt{en-US}] Use an English localization, American variant
+		\item[\texttt{german}] Use a German localization
 	\end{itemize}
+
 
 
 	\section{Creating a menu}
 	The following section deals with creating a menu using \texttt{mensa-tex}. \\
-	All the \textit{commands are to be used inside the preamble} since the menu gets created instantly when using \verb|\begin{document}|.
+	\textit{\color{red} All the commands described in this sections are to be used inside the preamble} since the menu gets created instantly when using \verb|\begin{document}|.
 	
 	\subsection{Setting up the basic information}
 	The basic information consists of the name of the cafeteria, the institute (or school) it is located at and the image used on the single pages. \\
@@ -157,7 +161,7 @@
 	Note that you \textit{have} to declare the image by using the \verb|\includegraphics| inside \verb|\setimage| (e.~g.~\verb|\setimage{\includegraphics[width=\linewidth]{path/to/picture}}|). \\
 	The space available for the image depends on the used layout (see table \ref{tab:image-sizes}).
 	
-	\begin{table}\centering\sffamily\small\renewcommand{\arraystretch}{1.25}
+	\begin{table}[b]\centering\sffamily\small\renewcommand{\arraystretch}{1.25}
 		\begin{tabular}{r*{2}{|>{\centering\ttfamily}m{.25\textwidth}<{\arraybackslash}}}
 			       & \textsf{normal layout}                                & app \textsf{layout}                                   \tabularnewline\hline\hline
 			 width & \verb|.50\textwidth|  \newline $\approx$ \verb|9.0cm| & \verb|.58\textwidth|  \newline $\approx$ \verb|4.9cm| \tabularnewline\hline
@@ -201,9 +205,9 @@
 		\end{tabbing}
 	\end{multicols}
 	you have to write \\
-	\verb|\monday{Fish and chips}%          <-- % is required for line breaks| \\\nopagebreak[4]
-	\verb|       {Crispy fried chicken}%| \\\nopagebreak[4]
-	\verb|       {Chocolate fudge}%| \\\nopagebreak[4]
+	\verb|\monday{Fish and chips}%          <-- % is required when| \\\nopagebreak[4]
+	\verb|       {Crispy fried chicken}%        commands are continued| \\\nopagebreak[4]
+	\verb|       {Chocolate fudge}%             in the following line| \\\nopagebreak[4]
 	\verb|       {DIY hamburgers}|
 	
 	\smallskip
@@ -214,23 +218,217 @@
 	Possible, additional hyphenations not found by \LaTeX\ can be marked by manually inserting discretionary hyphens (\verb|\-|) (e.~g.~\verb|hyphen\-ation|).
 	
 	
-	
-	% TODO: Ab hier weiterschreiben
 	\subsection{Adding additional information}
-	% \longremarks
-	% \shortremarks
+	\subsubsection{Remarks at the bottom of the page} \label{sec:remarks}
+	Some people may want to insert some remarks or annotation at the bottom of the page. \\
+	These remarks are defined using two commands, depending on the used layout.
 	
-	\subsection{Using fancy colours}
-	% \setbgcolor
-	% \setcolorfg
-	% \setctextcolor
+	\medskip
+	\DescribeMacro{\longremarks}
+	This command defines the remarks used for the normal layout. \\
+	They may be quite short (like \verb|\longremarks{Try it!}|) or very, very long.
 	
-	% \sup
-	% \vgt	\vgn
+	\medskip
+	\DescribeMacro{\shortremarks}
+	This command defines the remarks used for the \texttt{app}--Layout \\
+	Maybe, you should reduce the font size by inserting arbitrary \LaTeX\ font size commands (e.~g.~\verb|\shortremarks{\footnotesize Now using a smaller font size}|)
+	
+	
+	\subsubsection{Remarks for additive ingredients}
+	When food contains additive ingredients, these additive ingredients are usually indicated by adding superscript figures. \\
+	You have to insert the legend manually by using remarks (see section \ref{sec:remarks})
+	
+	\medskip
+	\DescribeMacro{\sup}
+	This command is a shortcut providing access to the \verb|\textsuperscript| command. \\
+	It can be used to produce a superscript 4 with \verb|\sup{4}|.
+	
+	
+	\subsubsection{Symbols for vegetarian and vegan food}
+	Due to the recent development I decided to declare symbols for labeling vegetarian and vegan food. \\
+	However, you have to insert the legend manually by using remarks (see section \ref{sec:remarks})
+	
+	\medskip
+	\DescribeMacro{\vgt}
+	Produces a symbol consisting of one green leaf ({\color{green!50!black}\textleaf}) for labeling vegetarian food
+	
+	\medskip
+	\DescribeMacro{\vgn}
+	Produces a symbol consisting of two green leaves ({\color{green!50!black}\textleaf\textleaf}) for labeling vegan food
+	
+	
+	\subsection{Using fancy colors}
+	To avoid a very boring look of the menu, some parts can be typeset in certain colors \\
+	The class defines three colors: one for the background of certain boxes, another one for the text inside the boxes and a third one for structure text.
+	
+	\subsubsection{Ways of changing colors}
+	The colors are changed globally by using three commands. The colors themselves are described using the normal syntax of the \texttt{xcolor} package.
+	
+	\medskip
+	\DescribeMacro{\setbgcolor}
+	Changes the background color of certain boxes (e.~g. \verb|\setbgcolor{blue}|)
+	
+	\medskip
+	\DescribeMacro{\setcolorfg}
+	Changes the color of text inside colored boxes (e.~g. \verb|\setcolorfg{white}|)
+	
+	\medskip
+	\DescribeMacro{\setctextcolor}
+	Changes the color of structure text (e.~g. \verb|\setctextcolor{red}|)
+	
+	
+	\subsubsection{A short note about color selection}
+	Please ensure, that the colors set with \verb|\setbgcolor| and \verb|\setcolorfg| are distinctive enough from each other. \verb|\setbgcolor{black}| and \verb|\setcolorfg{black!85}| are usually a very, very bad choice. \\
+	Also, a clear difference between \verb|\setctextcolor| and the background of the sheet of paper is recommended.
+	
+	
+	\subsubsection{Using class--defined colors in normal text}
+	The colors defined with \verb|\setbgcolor|, \verb|\setcolorfg| and \verb|\setctextcolor| can be used with the \verb|\color| and other color commands. \\
+	The corresponding defined colors are called \verb|\bgcolor|, \verb|\colorfg| and \verb|\ctextcolor|.
+	
+	\medskip
+	Examples: \verb|\color{\bgcolor}|, \verb|\color{\colorfg}| and \verb|\color{\ctextcolor}|
+	
 	
 	
 	\section{Adding support for other languages}
+	Currently, the class natively supports English (GB/US) and German. \\
+	However, with the instructions in this section, you are able to define additional localizations yourself. \\
+	It is recommended to select the localization closest to your localization by using the class options described in section \ref{sec:docclass} \textit{before} redefining commands. \\
+	Code described in this section is to be placed \textit{before} the \verb|\begin{document}| command.
 	
 	
-	% EXAMPLES
+	\subsection{Weekday names}
+	Weekday names are stored in the \verb|\wdayname| and \verb|\swdayname| command. \\
+	To modify them, copy the code printed below into your preamble and replace the English weekday names (and their abbreviations) with the appropriate form of your localization (but leave the \verb|%|s untouched)
+	
+	\medskip
+	\verb|% Weekday names| \\
+	\verb|\renewcommand{\wdayname}[1]{%| \\
+	\verb|    \ifcase\DTMfetchdow{#1}| \\
+	\verb|    Monday%| \\
+	\verb|    \or| \\
+	\verb|    Tuesday%| \\
+	\verb|    \or| \\
+	\verb|    Wednesday%| \\
+	\verb|    \or| \\
+	\verb|    Thursday%| \\
+	\verb|    \or| \\
+	\verb|    Friday%| \\
+	\verb|    \fi| \\
+	\verb|}|
+	
+	\bigskip
+	\verb|% Short weekday names| \\
+	\verb|\renewcommand{\swdayname}[1]{%| \\
+	\verb|    \ifcase\DTMfetchdow{#1}| \\
+	\verb|    Mon%| \\
+	\verb|    \or| \\
+	\verb|    Tue%| \\
+	\verb|    \or| \\
+	\verb|    Wed%| \\
+	\verb|    \or| \\
+	\verb|    Thu%| \\
+	\verb|    \or| \\
+	\verb|    Fri%| \\
+	\verb|    \fi| \\
+	\verb|}|
+	
+	
+	\subsection{Keywords}
+	There are four keywords stored in separate commands. \\
+	To modify them, copy the code printed below into your preamble and replace the English words by vocabulary appropriate for your localization.
+	
+	\medskip
+	\verb|\def\menuname{Menu}| \\
+	\verb|\def\dessertname{Dessert}| \\
+	\verb|\def\dinnername{Dinner}| \\
+	\verb|\def\dietname{Diet for}|
+	
+	
+	\subsection{Date formats}
+	This part is probably the most complicated one when defining own localizations. \\
+	Basically, there are four commands that have to be redefined:
+	\begin{itemize}
+		\item \verb|\shortdate| \\
+		The short form of the date (e.~g. 10/11)
+		
+		\item \verb|\dowshortdate| \\
+		The short form of the date, including the weekday (e.~g. Sat., 10/11)
+		
+		\item \verb|\longdate| \\
+		The long form of the date (e.~g. 10/11/2012)
+		
+		\item \verb|\daterange| \\
+		A range between two dates (e.~g. 10/11--14/11/2012)
+	\end{itemize}
+	
+	\medskip
+	When redefining these commands, you have to assemble the templates available for day, month and year in an order matching the localization.
+	
+	\subsubsection*{Date templates}
+	\begin{itemize}
+		\item[\sffamily\bfseries DD]
+		\verb|\DTMtwodigits{\DTMfetchday{#1}}| \\
+		Prints the day using two digits \\
+		If the day consists of only one digit, a zero is inserted  (e.~g. 01 instead of 1)
+		
+		\item[\sffamily\bfseries D]
+		\verb|\DTMfetchday{#1}| \\
+		Prints the day using one or two digits
+	\end{itemize}
+	
+	\subsubsection*{Month templates}
+	\begin{itemize}
+		\item[\sffamily\bfseries MM]
+		\verb|\DTMtwodigits{\DTMfetchmonth{#1}}| \\
+		Prints the month using two digits
+
+		\item[\sffamily\bfseries M]
+		\verb|\DTMfetchmonth{#1}| \\
+		Prints the month using one or two digits
+	\end{itemize}
+	
+	\subsubsection*{Year templates}
+	\begin{itemize}
+		\item[\sffamily\bfseries YYYY]
+		\verb|\DTMfetchyear{#1}| \\
+		Prints the year using as many digits as required
+		
+		\item[\sffamily\bfseries YY]
+		\verb|\DTMtwodigits{\DTMfetchyear{#1}}| \\
+		Prints the year using two digits
+	\end{itemize}
+	
+	\subsubsection*{Inserting weekday names}
+	\begin{tabular}{>{\sffamily\bfseries}rl}
+		\enquote{normal} weekday names: & \verb|\wdayname{#1}|                \\
+		           short weekday names: & \verb|\swdayname{\DTMfetchdow{#1}}|
+	\end{tabular}
+	
+	\subsubsection*{Redefining the commands using the templates}
+	Now, you only have to redefine the commands. Use the following basic structure: \\
+	\verb|\renewcommand{\shortdate}[1]{%| \\
+	\verb|    %% INSERT THE TEMPLATE COMBINATIONS HERE %%| \\
+	\verb|}|
+	
+	\bigskip
+	The templates listed above can be combined suitable. \\
+	For example, if you want the long date to be displayed in the \textsf{YYYY-MM-DD} format, the following code does the trick: \\
+	\verb|\renewcommand{\longdate}[1]{%| \\\nopagebreak[4]
+	\verb|    \DTMfetchyear{#1}%                      The YYYY template| \\\nopagebreak[4]
+	\verb|    -%                                      Year/month separator| \\\nopagebreak[4]
+	\verb|    \DTMtwodigits{\DTMfetchmonth{#1}}%      The MM template| \\\nopagebreak[4]
+	\verb|    -%                                      Month/day separator| \\\nopagebreak[4]
+	\verb|    \DTMtwodigits{\DTMfetchday{#1}}%        The DD template| \\\nopagebreak[4]
+	\verb|}| \\
+	
+	\smallskip
+	The same principle applies on redefining \verb|\shortdate|, \verb|\dowshortdate| and \verb|\daterange|. \\
+	The \verb|%|s avoid spaces after templates and separators when inserting line breaks.
+	
+	
+	
+	% TODO: Ab hier weiterschreiben
+	\section{A working example}
 \end{document}
