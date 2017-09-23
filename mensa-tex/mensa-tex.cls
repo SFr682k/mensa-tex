@@ -25,7 +25,7 @@
 
 
 
-\ProvidesClass{mensa-tex}[2017/09/23 mensa-tex class -- "sid" (still in development)]
+\ProvidesClass{mensa-tex}[2017/09/23 mensa-tex - a class for typesetting simple school cafeteria menus]
 
 
 % Requires LaTeX2e
@@ -132,8 +132,8 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 % Defines symbols for vegetarian and vegan food
-\def\vgt{{\color{green!50!black}\textleaf}}
-\def\vgn{{\color{green!50!black}\textleaf\textleaf}}
+\def\vgt{{\rmfamily\color{green!50!black}\textleaf}}
+\def\vgn{{\rmfamily\color{green!50!black}\textleaf\textleaf}}
 
 
 
@@ -306,7 +306,7 @@
 	\def\menuname{Menu}
 	\def\dessertname{Dessert}
 	\def\dinnername{Dinner}
-	\def\dietname{Diet for}
+	\def\dietname{Weekly menu}
 \fi
 
 
@@ -381,7 +381,7 @@
 	% German short weekday names
 	\def\swdayname{}
 	\renewcommand{\swdayname}[1]{%
-		\ifcase#1
+		\ifcase\DTMfetchdow{#1}
 		Mo%
 		\or
 		Di%
