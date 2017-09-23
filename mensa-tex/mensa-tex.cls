@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex.cls', Version 2017-09-22
+%%	This is file 'mensa-tex.cls', Version 2017-09-23
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -25,7 +25,7 @@
 
 
 
-\ProvidesClass{mensa-tex}[2017/09/22 mensa-tex class -- "sid" (still in development)]
+\ProvidesClass{mensa-tex}[2017/09/23 mensa-tex class -- "sid" (still in development)]
 
 
 % Requires LaTeX2e
@@ -275,13 +275,17 @@
 		Thursday%
 		\or
 		Friday%
+		\or
+		Saturday%
+		\or
+		Sunday%
 		\fi
 	}
 	
 	% German short weekday names
 	\def\swdayname{}
 	\renewcommand{\swdayname}[1]{%
-		\ifcase#1
+		\ifcase\DTMfetchdow{#1}
 		Mon%
 		\or
 		Tue%
@@ -291,6 +295,10 @@
 		Thu%
 		\or
 		Fri%
+		\or
+		Sat%
+		\or
+		Sun%
 		\fi
 	}
 	
@@ -363,6 +371,10 @@
 		Donnerstag%
 		\or
 		Freitag%
+		\or
+		Samstag%
+		\or
+		Sonntag%
 		\fi
 	}
 	
@@ -379,6 +391,10 @@
 		Do%
 		\or
 		Fr%
+		\or
+		Sa%
+		\or
+		So%
 		\fi
 	}
 	
@@ -436,11 +452,11 @@
 				\bfseries{\color{\colorfg} \dessertname{}} &%
 				\bfseries{\color{\colorfg} \dinnername{}} \tabularnewline \hline
 				%
-				\printday{0}    & \mondayI                & \mondayII               & \mondayD                 & \mondayA                \tabularnewline \hline
-				\printday{1}    & \tuesdayI               & \tuesdayII              & \tuesdayD                & \tuesdayA               \tabularnewline \hline
-				\printday{2}    & \wednesdayI             & \wednesdayII            & \wednesdayD              & \wednesdayA             \tabularnewline \hline
-				\printday{3}    & \thursdayI              & \thursdayII             & \thursdayD               & \thursdayA              \tabularnewline \hline
-				\printday{4}    & \fridayI                & \fridayII               & \fridayD                 & \fridayA                \tabularnewline \hline
+				\printday{monday}    & \mondayI     & \mondayII     & \mondayD     & \mondayA       \tabularnewline \hline
+				\printday{tuesday}   & \tuesdayI    & \tuesdayII    & \tuesdayD    & \tuesdayA      \tabularnewline \hline
+				\printday{wednesday} & \wednesdayI  & \wednesdayII  & \wednesdayD  & \wednesdayA    \tabularnewline \hline
+				\printday{thursday}  & \thursdayI   & \thursdayII   & \thursdayD   & \thursdayA     \tabularnewline \hline
+				\printday{friday}    & \fridayI     & \fridayII     & \fridayD     & \fridayA       \tabularnewline \hline
 			\end{tabular}
 		\end{center}
 	

@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex-doc.tex', Version 2017-09-22
+%%	This is file 'mensa-tex-doc.tex', Version 2017-09-23
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -57,7 +57,7 @@
 
 \title{The \texttt{mensa-tex} class \\ {\large\url{https://github.com/SFr682k/mensa-tex}}}
 \author{Sebastian Friedl \\ \href{mailto:sfr682k@t-online.de}{\ttfamily sfr682k@t-online.de}}
-\date{2017/09/22}
+\date{2017/09/23}
 
 \hypersetup{pdftitle={The mensa-tex class},pdfauthor={Sebastian Friedl}}
 
@@ -114,7 +114,7 @@
 
 	\subsection*{Call for cooperation}
 	\addcontentsline{toc}{subsection}{Call for cooperation}
-	Please report bugs and other problems as well as suggestions for improvements using the \href{https://github.com/SFr682k/mensa-tex/issues}{issue tracker on GitHub} or sending an email (\href{mailto:sfr682k@t-online.de}{\texttt{sfr682k@t-online.de}}).
+	Please report bugs and other problems as well as suggestions for improvements by using the \href{https://github.com/SFr682k/mensa-tex/issues}{issue tracker on GitHub} or sending an email to \href{mailto:sfr682k@t-online.de}{\texttt{sfr682k@t-online.de}}.
 
 
 	\clearpage
@@ -138,8 +138,8 @@
 
 
 	\section{Creating a menu}
-	The following section deals with creating a menu using \texttt{mensa-tex}. \\
-	\textit{\color{red} All the commands described in this sections are to be used inside the preamble} since the menu gets created instantly when using \verb|\begin{document}|.
+	This section deals with creating a menu using \texttt{mensa-tex}. \\
+	\textit{\color{red} All the commands described in this section are to be used inside the preamble} since the menu gets created instantly when using \verb|\begin{document}|.
 	
 	\subsection{Setting up the basic information}
 	The basic information consists of the name of the cafeteria, the institute (or school) it is located at and the image used on the single pages. \\
@@ -175,11 +175,11 @@
 	
 	
 	\subsection{Adding food}
-	For adding information about the food, the following six commands are provided.
+	For adding information about the food, the commands described in this subsection are provided.
 	
 	\medskip
 	\DescribeMacro{\startdate}
-	This commands defines the \enquote{start date}, the date of the first entry \textit{(the start date's weekday happens to be a Monday)}.	The start date has to be present in \texttt{YYYY-MM-DD} format, e.~g.~\verb|\startdate{2007-01-01}| \textit{(Default is 2001-01-01)}.
+	This commands defines the \enquote{start date}, the date of the first entry \textit{(the start date's weekday mostly happens to be a Monday)}. The start date has to be present in \textsf{YYYY-MM-DD} format, e.~g.~\verb|\startdate{2007-01-01}| \textit{(Default is 2001-01-01)}.
 	
 	\medskip
 	\DescribeMacro{\monday}\DescribeMacro{\tuesday}\DescribeMacro{\wednesday}\DescribeMacro{\thursday}\DescribeMacro{\friday}
@@ -220,7 +220,7 @@
 	
 	\subsection{Adding additional information}
 	\subsubsection{Remarks at the bottom of the page} \label{sec:remarks}
-	Some people may want to insert some remarks or annotation at the bottom of the page. \\
+	Some people may want to insert some remarks or annotations at the bottom of the page. \\
 	These remarks are defined using two commands, depending on the used layout.
 	
 	\medskip
@@ -258,10 +258,10 @@
 	
 	
 	\subsection{Using fancy colors}
-	To avoid a very boring look of the menu, some parts can be typeset in certain colors \\
+	To avoid a very boring look of the menu, some parts can be typeset in certain colors. \\
 	The class defines three colors: one for the background of certain boxes, another one for the text inside the boxes and a third one for structure text.
 	
-	\subsubsection{Ways of changing colors}
+	\subsubsection{Changing colors}
 	The colors are changed globally by using three commands. The colors themselves are described using the normal syntax of the \texttt{xcolor} package.
 	
 	\medskip
@@ -278,12 +278,12 @@
 	
 	
 	\subsubsection{A short note about color selection}
-	Please ensure, that the colors set with \verb|\setbgcolor| and \verb|\setcolorfg| are distinctive enough from each other. \verb|\setbgcolor{black}| and \verb|\setcolorfg{black!85}| are usually a very, very bad choice. \\
+	Please ensure, that the colors set with \verb|\setbgcolor| and \verb|\setcolorfg| are distinctive enough from each other. \verb|\setbgcolor{black}| and \verb|\setcolorfg{black!85}| are usually a very, very bad choice when being used together. \\
 	Also, a clear difference between \verb|\setctextcolor| and the background of the sheet of paper is recommended.
 	
 	
 	\subsubsection{Using class--defined colors in normal text}
-	The colors defined with \verb|\setbgcolor|, \verb|\setcolorfg| and \verb|\setctextcolor| can be used with the \verb|\color| and other color commands. \\
+	The colors defined with \verb|\setbgcolor|, \verb|\setcolorfg| and \verb|\setctextcolor| can be used with \verb|\color| and other color commands. \\
 	The corresponding defined colors are called \verb|\bgcolor|, \verb|\colorfg| and \verb|\ctextcolor|.
 	
 	\medskip
@@ -291,15 +291,18 @@
 	
 	
 	
-	\section{Adding support for other languages}
+	\section{How to add support for other languages}
 	Currently, the class natively supports English (GB/US) and German. \\
 	However, with the instructions in this section, you are able to define additional localizations yourself. \\
 	It is recommended to select the localization closest to your localization by using the class options described in section \ref{sec:docclass} \textit{before} redefining commands. \\
-	Code described in this section is to be placed \textit{before} the \verb|\begin{document}| command.
+	Code described in this section is to be placed \textit{before} the \verb|\begin{document}| command. \\
+	Only redefine commands when necessary.
+	
+	% TODO: Table with example of pre-defined localizations
 	
 	
 	\subsection{Weekday names}
-	Weekday names are stored in the \verb|\wdayname| and \verb|\swdayname| command. \\
+	Weekday names are stored in the \verb|\wdayname| and \verb|\swdayname| commands. \\
 	To modify them, copy the code printed below into your preamble and replace the English weekday names (and their abbreviations) with the appropriate form of your localization (but leave the \verb|%|s untouched)
 	
 	\medskip
@@ -315,6 +318,10 @@
 	\verb|    Thursday%| \\
 	\verb|    \or| \\
 	\verb|    Friday%| \\
+	\verb|    \or| \\
+	\verb|    Saturday%| \\
+	\verb|    \or| \\
+	\verb|    Sunday%| \\
 	\verb|    \fi| \\
 	\verb|}|
 	
@@ -331,6 +338,10 @@
 	\verb|    Thu%| \\
 	\verb|    \or| \\
 	\verb|    Fri%| \\
+	\verb|    \or| \\
+	\verb|    Sat%| \\
+	\verb|    \or| \\
+	\verb|    Sun%| \\
 	\verb|    \fi| \\
 	\verb|}|
 	
@@ -348,7 +359,7 @@
 	
 	\subsection{Date formats}
 	This part is probably the most complicated one when defining own localizations. \\
-	Basically, there are four commands that have to be redefined:
+	Basically, there are four commands that may be redefined:
 	\begin{itemize}
 		\item \verb|\shortdate| \\
 		The short form of the date (e.~g. 10/11)
@@ -402,8 +413,8 @@
 	
 	\subsubsection*{Inserting weekday names}
 	\begin{tabular}{>{\sffamily\bfseries}rl}
-		\enquote{normal} weekday names: & \verb|\wdayname{#1}|                \\
-		           short weekday names: & \verb|\swdayname{\DTMfetchdow{#1}}|
+		\enquote{normal} weekday names: & \verb|\wdayname{#1}|  \\
+		           short weekday names: & \verb|\swdayname{#1}|
 	\end{tabular}
 	
 	\subsubsection*{Redefining the commands using the templates}
@@ -421,14 +432,41 @@
 	\verb|    \DTMtwodigits{\DTMfetchmonth{#1}}%      The MM template| \\\nopagebreak[4]
 	\verb|    -%                                      Month/day separator| \\\nopagebreak[4]
 	\verb|    \DTMtwodigits{\DTMfetchday{#1}}%        The DD template| \\\nopagebreak[4]
-	\verb|}| \\
+	\verb|}| \pagebreak[0]
 	
-	\smallskip
-	The same principle applies on redefining \verb|\shortdate|, \verb|\dowshortdate| and \verb|\daterange|. \\
+	\medskip
+	The same principle applies to redefinitions of \verb|\shortdate| and \verb|\dowshortdate|. \\
 	The \verb|%|s avoid spaces after templates and separators when inserting line breaks.
 	
+	\medskip
+	If you have already redefined \verb|\shortdate| and \verb|\longdate|, you may reuse these definitions when redefining \verb|\dowshortdate|, for example: \\
+	\verb|\renewcommand{\dowshortdate}[1]{%| \\\nopagebreak[4]
+	\verb|    \wdayname{#1}%            Insert the weekday| \\\nopagebreak[4]
+	\verb|    ,~%                       Weekday/day seperator (~ = space)| \\\nopagebreak[4]
+	\verb|    \shortdate{#1}%           Use the short day template| \\\nopagebreak[4]
+	\verb|}| \pagebreak[0]
 	
+	\bigskip
+	\textit{Redefining the} \verb|\daterange| \textit{command is special} since it requires two arguments. \\
+	Here, you have to use \dots
+	\begin{itemize}
+		\item
+		{\ttfamily\#1} for commands and templates referring to the start date and
+		
+		\item
+		{\ttfamily\#2} for commands and templates referring to the end date
+	\end{itemize}
 	
+	For example, a working redefinition of \verb|\daterange| can be achieved with this code: \\
+	\verb|\renewcommand{\daterange}[2]{%  <-- »[2]« instead of »[1]«!!| \\\nopagebreak[4]
+	\verb|    \shortdate{#1}%                 Start date| \\\nopagebreak[4]
+	\verb|    \,--\,%                         Seperator: -- with spaces| \\\nopagebreak[4]
+	\verb|    \shortdate{#2}%                 End date: #2 inst. of #1| \\\nopagebreak[4]
+	\verb|}|
+
+
 	% TODO: Ab hier weiterschreiben
 	\section{A working example}
+	
+	
 \end{document}
