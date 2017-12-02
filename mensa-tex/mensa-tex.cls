@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex.cls', Version 2017-09-23
+%%	This is file 'mensa-tex.cls', Version 2017-12-02
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -25,13 +25,13 @@
 
 
 
-\ProvidesClass{mensa-tex}[2017/09/23 mensa-tex - a class for typesetting simple school cafeteria menus]
+\ProvidesClass{mensa-tex}[2017/12/02 mensa-tex - a class for typesetting simple school cafeteria menus]
 
 
 % Requires LaTeX2e
 \NeedsTeXFormat{LaTeX2e}
 
-% Basic class: article instead of KOMA-Skript classes (-> less dependencies :D)
+% Base class: article instead of KOMA-Skript classes (-> less dependencies :D)
 \LoadClass[12pt]{article}
 
 

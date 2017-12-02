@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex-doc.tex', Version 2017-09-23
+%%	This is file 'mensa-tex-doc.tex', Version 2017-12-02
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -58,7 +58,7 @@
 
 \title{The \texttt{mensa-tex} class \\ {\large\url{https://github.com/SFr682k/mensa-tex}}}
 \author{Sebastian Friedl \\ \href{mailto:sfr682k@t-online.de}{\ttfamily sfr682k@t-online.de}}
-\date{2017/09/23}
+\date{2017/12/02}
 
 \hypersetup{pdftitle={The mensa-tex class},pdfauthor={Sebastian Friedl}}
 
@@ -159,7 +159,7 @@
 	\medskip
 	\DescribeMacro{\setimage}
 	Add an image to your diet plans using this command. \\
-	Note that you \textit{have} to declare the image by using the \verb|\includegraphics| inside \verb|\setimage| (e.~g.~\verb|\setimage{\includegraphics[width=\linewidth]{path/to/picture}}|). \\
+	Note that you \textit{have} to declare the image by using \verb|\includegraphics| inside \verb|\setimage| (e.~g.~\verb|\setimage{\includegraphics[width=8cm]{path/to/picture}}|). \\
 	The space available for the image depends on the used layout (see table \ref{tab:image-sizes}).
 	
 	\begin{table}[b]\centering\sffamily\small\renewcommand{\arraystretch}{1.25}
@@ -191,7 +191,7 @@
 			\item Menu I
 			\item Menu II
 			\item Dessert
-			\item Lunch
+			\item Dinner
 		\end{enumerate}
 	\end{multicols}
 
@@ -202,7 +202,7 @@
 			Menu I:		\> Fish and chips \\
 			Menu II:	\> Crispy fried chicken \\
 			Dessert:	\> Chocolate fudge \\
-			Lunch:		\> DIY hamburgers
+			Dinner:		\> DIY hamburgers
 		\end{tabbing}
 	\end{multicols}
 	you have to write \\
@@ -212,7 +212,7 @@
 	\verb|       {DIY hamburgers}|
 	
 	\smallskip
-	It is possible to insert the command listed above without line breaks, however, doing so will result in the source being less human--readable.
+	It is possible to insert the command listed above without line breaks, however, doing so will result in the source being less human-readable.
 	
 	\smallskip
 	Due to the menu being implemented in a \texttt{tabular} environment, you have to use \verb|\linebreak| instead of \,\verb|\\|\, to produce additional lines. \\
@@ -467,7 +467,7 @@
 	\verb|\renewcommand{\dowshortdate}[1]{%| \\\nopagebreak[4]
 	\verb|    \wdayname{#1}%            Insert the weekday| \\\nopagebreak[4]
 	\verb|    ,~%                       Weekday/day seperator (~ = space)| \\\nopagebreak[4]
-	\verb|    \shortdate{#1}%           Use the short day template| \\\nopagebreak[4]
+	\verb|    \shortdate{#1}%           Use the short date template| \\\nopagebreak[4]
 	\verb|}| \pagebreak[0]
 	
 	\bigskip
