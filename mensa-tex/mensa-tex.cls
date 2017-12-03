@@ -1,4 +1,4 @@
-%%	This is file 'mensa-tex.cls', Version 2017-12-02
+%%	This is file 'mensa-tex.cls', Version 2017-12-03
 %%	Copyright 2017 Sebastian Friedl <sfr682k@t-online.de>
 %% 
 %%	This work may be distributed and/or modified under the conditions of the LaTeX Project
@@ -11,7 +11,7 @@
 %%	Author: Sebastian Friedl
 %%	Current maintainer of this work is Sebastian Friedl
 %%
-%%	This work consists of the files mensa-tex.cls and mensa-tex-doc.tex
+%%	This work consists of the files mensa-tex.cls, mensa-tex-doc.tex and mensa-tex-example.tex
 %%
 %%	---------------------------------------------------------------------------------------------------------------------------------------------
 %%
